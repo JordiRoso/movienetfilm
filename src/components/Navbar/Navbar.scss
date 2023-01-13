@@ -1,0 +1,28 @@
+.nav-link {
+    color: #ececec !important;
+
+    &:hover {
+        color: var(--bs-primary) !important;
+    }
+}
+
+.activeNav {
+    color: var(--bs-primary) !important;
+    position: relative;
+    font-weight: bold !important;
+
+    //left: 0;
+
+
+    &::before {
+        content: "";
+        width: 80%;
+        height: 5px;
+        position: absolute;
+        background-color: var(--bs-primary);
+        bottom: -13px;
+        left: 50%;
+        transform: translate(-50%, 0);
+    }
+
+}

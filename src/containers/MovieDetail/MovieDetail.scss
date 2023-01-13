@@ -1,0 +1,33 @@
+.backdrop-container {
+    position: relative;
+    filter: blur(0px);
+    background: rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    color: white;
+}
+
+.backdrop-background {
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute !important;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    filter: blur(5px);
+    mix-blend-mode: multiply;
+    opacity: 0.8;
+    transform: scale(1.1);
+}
+
+.vote-average {
+    width: 3em;
+    height: 3em;
+    background-color: var(--bs-primary);
+    color: var(--bs-white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-weight: bold;
+    border: 1px solid var(--bs-light);
+}
