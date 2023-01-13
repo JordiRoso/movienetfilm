@@ -21,6 +21,9 @@ export default function Login() {
       const credentials = {
          // email: "super@super.com",
          // password: "123456",
+//          email": "flay@flay.com",
+// "password": "123@Flay"
+
          email: formValues.email,
          password: formValues.password,
       };
