@@ -11,6 +11,7 @@ import About from "./containers/About/About";
 import Login from "./containers/Login/Login";
 import Admin from "./containers/Admin/Admin";
 
+
 function App() {
    return (
       <div className="App">
@@ -23,6 +24,7 @@ function App() {
                <Route path="/about" element={<About />} />
                <Route path="/login" element={<Login />} />
                <Route path="/admin" element={<Admin />} />
+               
             </Routes>
          </BrowserRouter>
       </div>

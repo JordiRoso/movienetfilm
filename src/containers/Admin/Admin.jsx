@@ -30,9 +30,10 @@ export default function Admin() {
    return (
       <div>
          <h2>Admin panel</h2>
+         <h1>eiii!!!!!</h1>
 
          <div>
-            {users.map((user) => (
+            {users ?.map((user) => (
                <div key={user._id}>{user.name}</div>
             ))}
          </div>
