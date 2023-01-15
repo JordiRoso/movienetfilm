@@ -18,5 +18,13 @@ export const validateLoginFormValues = (formValues) => {
       errors.password = "Password must be more than 6 characters!";
    }
 
+   //name admin
+   // if (!formValues.nameadmin) {
+   //    errors.nameadmin = "Name is required!";
+   // } else if (formValues.nameadmin.length < 5) {
+   //    errors.nameadmin = "Password must be more than 5 characters!";
+   // }
+
+
    return errors;
 };

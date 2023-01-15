@@ -13,7 +13,7 @@ function Movie({ movie }) {
       navigate(`/movies/${movie.id}`);
    };
 
-   const getYear = (date) => format(Date.parse(date), "yyyy");
+   // const getYear = (date) => format(Date.parse(date), "yyyy");
 
    return (
       <div className="">
@@ -37,7 +37,7 @@ function Movie({ movie }) {
                <h5 className="card-title mb-2 mt-2 fs-6 fw-bold">
                   {movie.title}
                </h5>
-               <div className="release-date">{getYear(movie.release_date)}</div>
+               {/* <div className="release-date">{getYear(movie.release_date)}</div> */}
             </div>
          </div>
       </div>

@@ -1,7 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "./Navbar.scss";
+import "./NavbarUser.scss";
 import logo from "../../assets/react.svg";
+
 export default function Navbar() {
   let activeClassName = "activeNav";
 
@@ -17,7 +18,7 @@ export default function Navbar() {
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark fs-6">
         <div className="container">
-          {/* <a className="navbar-brand" href="/">
+          <a className="navbar-brand" href="/">
             <img
               src={logo}
               alt=""
@@ -25,7 +26,7 @@ export default function Navbar() {
               height="40"
               className="d-inline-block align-text-top"
             />
-          </a> */}
+          </a>
           <button
             className="navbar-toggler"
             type="button"
@@ -46,7 +47,6 @@ export default function Navbar() {
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="#">
-                  
                   Link
                 </a>
               </li>

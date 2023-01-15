@@ -2,13 +2,15 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthService from "../../_services/AuthService";
 import TokenStorageService from "../../_services/TokenStorageService";
-import { validateLoginFormValues } from "../../_helpers/form-utilities";
-import "./Login.scss";
+import { validate1LoginFormValues } from "../../_helpers1/form-utilities1";
+// import "./Login.scss";
 
-export default function Login() {
+export default function LoginAdmin() {
   const initialValues = {
     email: "",
     password: "",
+    // name: "",
+    password2:"",
   };
   // hooks
   const navigate = useNavigate();
@@ -18,7 +20,7 @@ export default function Login() {
   const [isSubmit, setIsSubmit] = useState(false);
 
   useEffect(() => {
-    const credentials = {
+    const credentials1 = {
       // email: "super@super.com",
       // password: "123456",
       //          email": "flay@flay.com",
@@ -26,54 +28,48 @@ export default function Login() {
 
       email: formValues.email,
       password: formValues.password,
+      password2: formValues.password2,
+    //   name: formValues.nameadmin,
       // password: formValues.password,
     };
     // verificar que no hay error
     if (Object.keys(formErrors).length == 0 && isSubmit) {
       console.log("LOGIN...");
-      login(credentials);
+      login(credentials1);
     }
     console.log("useEffect", formErrors);
   }, [formErrors]);
 
-  const login = async (credentials) => {
+  const login = async (credentials1) => {
     try {
-      const res = await AuthService.login(credentials);
+      const res = await AuthService.login(credentials1);
       console.log(res.data);
       TokenStorageService.saveToken(res.data.token);
       console.log(res.data.role);
-      // switch (res.data.role) {
-      //   case "user":
-      //     navigate("/admin")
-      //     break;
-      //   case "super_admin":
-      //     navigate("/admin")  
-      //     break;
-      // }
-      navigate("/movies");
+      navigate("/user");
     } catch (error) {
       console.log(error);
     }
   };
 
-    // const login = async (credentials) => {
-    //   try {
-    //     const res = await AuthService.login(credentials);
-    //     console.log(res.data);
-    //     TokenStorageService.saveToken(res.data.token);
-    //     console.log(res.data.role);
-    //     switch (res.data.role) {
-    //       case "user":
-    //         navigate("/admin");
-    //         break;
-    //       // case "super_admin":
-    //       //   navigate("/admin");
-    //       //   break;
-    //     }
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // };
+  // const login = async (credentials) => {
+  //   try {
+  //     const res = await AuthService.login(credentials);
+  //     console.log(res.data);
+  //     TokenStorageService.saveToken(res.data.token);
+  //     console.log(res.data.role);
+  //     switch (res.data.role) {
+  //       case "user":
+  //         navigate("/admin");
+  //         break;
+  //       // case "super_admin":
+  //       //   navigate("/admin");
+  //       //   break;
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   // handlers
   const handleChange = (e) => {
@@ -88,7 +84,7 @@ export default function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("submit");
-    setFormErrors(validateLoginFormValues(formValues));
+    setFormErrors(validate1LoginFormValues(formValues));
     console.log("handle", formErrors);
     setIsSubmit(true);
   };
@@ -127,19 +123,17 @@ export default function Login() {
               {formErrors.password}
             </div>
           </div>
-          {/* <div className="mb-3">
-                  <label className="form-label">Password</label>
-                  <input
-                     type="password"
-                     name="password"
-                     className="form-control"
-                     value={formValues.password}
-                     onChange={handleChange}
-                  />
-                  <div className="form-text form-text-error">
-                     {formErrors.password}
-                  </div>
-               </div> */}
+          <div className="mb-3">
+            <label className="form-label">Password2</label>
+            <input
+              type="password2"
+              name="password2"
+              className="form-control"
+              value={formValues.password2}
+              onChange={handleChange}
+            />
+            <div className="form-text form-text-error">{formErrors.password2}</div>
+          </div>
           <div className="d-grid gap-2">
             <button
               type="submit"

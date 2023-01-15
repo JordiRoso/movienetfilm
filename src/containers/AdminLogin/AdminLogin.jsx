@@ -3,7 +3,7 @@ import UserService from "../../_services/UserService";
 import TokenStorageService from "../../_services/TokenStorageService";
 import { Navigate, useNavigate } from "react-router-dom";
 
-export default function Admin() {
+export default function AdminLogin() {
   const navigate = useNavigate();
   const token = TokenStorageService.getToken();
   const [users, setUsers] = useState([]);
@@ -29,7 +29,7 @@ export default function Admin() {
 
   return (
     <div>
-      <h2>admin</h2>
+      <h2>adminlogin</h2>
       <h1>12</h1>
 
       <div>

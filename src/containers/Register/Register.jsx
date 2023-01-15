@@ -3,12 +3,13 @@ import { useNavigate } from "react-router-dom";
 import AuthService from "../../_services/AuthService";
 import TokenStorageService from "../../_services/TokenStorageService";
 import { validateLoginFormValues } from "../../_helpers/form-utilities";
-import "./Login.scss";
+// import "./Login.scss";
 
-export default function Login() {
+export default function Register() {
   const initialValues = {
     email: "",
     password: "",
+    // name: "",
   };
   // hooks
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ export default function Login() {
   const [isSubmit, setIsSubmit] = useState(false);
 
   useEffect(() => {
-    const credentials = {
+    const user = {
       // email: "super@super.com",
       // password: "123456",
       //          email": "flay@flay.com",
@@ -26,54 +27,25 @@ export default function Login() {
 
       email: formValues.email,
       password: formValues.password,
-      // password: formValues.password,
     };
     // verificar que no hay error
     if (Object.keys(formErrors).length == 0 && isSubmit) {
-      console.log("LOGIN...");
-      login(credentials);
+      console.log("Register...");
+      register(user);
     }
     console.log("useEffect", formErrors);
   }, [formErrors]);
 
-  const login = async (credentials) => {
+  const register = async (user) => {
     try {
-      const res = await AuthService.login(credentials);
+      const res = await AuthService.register(user);
       console.log(res.data);
       TokenStorageService.saveToken(res.data.token);
-      console.log(res.data.role);
-      // switch (res.data.role) {
-      //   case "user":
-      //     navigate("/admin")
-      //     break;
-      //   case "super_admin":
-      //     navigate("/admin")  
-      //     break;
-      // }
-      navigate("/movies");
+      navigate("/user");
     } catch (error) {
       console.log(error);
     }
   };
-
-    // const login = async (credentials) => {
-    //   try {
-    //     const res = await AuthService.login(credentials);
-    //     console.log(res.data);
-    //     TokenStorageService.saveToken(res.data.token);
-    //     console.log(res.data.role);
-    //     switch (res.data.role) {
-    //       case "user":
-    //         navigate("/admin");
-    //         break;
-    //       // case "super_admin":
-    //       //   navigate("/admin");
-    //       //   break;
-    //     }
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // };
 
   // handlers
   const handleChange = (e) => {
@@ -96,7 +68,7 @@ export default function Login() {
   return (
     <div>
       <div className="container pt-5 col-lg-3">
-        <h2>Login</h2>
+        <h2>Register</h2>
 
         <pre className="text-start">
           {JSON.stringify(formValues, undefined, 2)}
@@ -127,19 +99,6 @@ export default function Login() {
               {formErrors.password}
             </div>
           </div>
-          {/* <div className="mb-3">
-                  <label className="form-label">Password</label>
-                  <input
-                     type="password"
-                     name="password"
-                     className="form-control"
-                     value={formValues.password}
-                     onChange={handleChange}
-                  />
-                  <div className="form-text form-text-error">
-                     {formErrors.password}
-                  </div>
-               </div> */}
           <div className="d-grid gap-2">
             <button
               type="submit"

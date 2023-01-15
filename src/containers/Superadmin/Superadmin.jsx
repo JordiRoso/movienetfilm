@@ -5,7 +5,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 
 export default function Admin() {
   const navigate = useNavigate();
-  const token = TokenStorageService.getToken();
+  // const token = TokenStorageService.getToken();
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -13,10 +13,10 @@ export default function Admin() {
   }, []);
 
   // functions definition
-  const getAllUsers = async (token) => {
+  const getAllUsers = async () => {
     try {
       const res = await UserService.getAllUsers(token);
-      setUsers(res.data.data);
+      setUsers(res.data.results);
     } catch (error) {
       console.log(error.message || error);
     }
@@ -29,20 +29,16 @@ export default function Admin() {
 
   return (
     <div>
-      <h2>admin</h2>
-      <h1>12</h1>
+      <h2>User</h2>
+      <h1>1</h1>
+
 
       <div>
-        {users?.map((user) => (
-          <div key={user._id}>
-            <ol>
-              <li>{user.name}</li>
-              <li>{user.email}</li>
-              <li>{user.role}</li>
-            </ol>
-          </div>
-        ))}
-      </div>
+            {users ?.map((user) => (
+               <div key={user._id}>{user.name}</div>
+            ))}
+         </div>
+         
 
       <button onClick={handleLogout}>Logout </button>
     </div>
