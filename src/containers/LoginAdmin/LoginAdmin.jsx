@@ -46,7 +46,7 @@ export default function LoginAdmin() {
       console.log(res.data);
       TokenStorageService.saveToken(res.data.token);
       console.log(res.data.role);
-      navigate("/user");
+      navigate("/admin");
     } catch (error) {
       console.log(error);
     }
