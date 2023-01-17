@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { login } from "../../features/login/authSlice";
 import { useNavigate } from "react-router-dom";
 import AuthService from "../../_services/AuthService";
 import TokenStorageService from "../../_services/TokenStorageService";
 import { validateLoginFormValues } from "../../_helpers/form-utilities";
-import { login } from "../../features/login/authSlice";
+
 import "./Login.scss";
+import { startOfQuarter } from "date-fns";
 
 export default function Login() {
   const initialValues = {
@@ -16,9 +18,9 @@ export default function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // const logged = useSelector((state) => state.auth.isLoggedIn);
+  const logged = useSelector((state) => state.auth.isLoggedIn);
 
-  // console.log(`Loggeado es ${logged}`);
+  console.log(`Loggeado es ${logged}`);
 
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
@@ -26,14 +28,8 @@ export default function Login() {
 
   useEffect(() => {
     const credentials = {
-      // email: "super@super.com",
-      // password: "123456",
-      //          email": "flay@flay.com",
-      // "password": "123@Flay"
-
       email: formValues.email,
       password: formValues.password,
-      // password: formValues.password,
     };
     // verificar que no hay error
     if (Object.keys(formErrors).length == 0 && isSubmit) {
@@ -43,15 +39,15 @@ export default function Login() {
     console.log("useEffect", formErrors);
   }, [formErrors]);
 
-  const login = async (credentials) => {
+  const handleLogin = async (credentials) => {
     try {
       const res = await AuthService.login(credentials);
       console.log(res.data);
-      TokenStorageService.saveToken(res.data.token);
+      TokenStorageService.saveToken(res.token);
 
-      dispatch(login(res.user));
+      dispatch(login(res.data));
 
-      console.log(res.data.role);
+      console.log(res.data.message);
       if (res.data.message === "User Logged as SUPER_ADMIN") {
         navigate("/admin");
       } else {
@@ -61,27 +57,6 @@ export default function Login() {
       console.log(error);
     }
   };
-
-  //res.data.role == "super_admin"
-
-  // const login = async (credentials) => {
-  //   try {
-  //     const res = await AuthService.login(credentials);
-  //     console.log(res.data);
-  //     TokenStorageService.saveToken(res.data.token);
-  //     console.log(res.data.role);
-  //     switch (res.data.role) {
-  //       case "user":
-  //         navigate("/admin");
-  //         break;
-  //       // case "super_admin":
-  //       //   navigate("/admin");
-  //       //   break;
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
 
   // handlers
   const handleChange = (e) => {
@@ -152,6 +127,7 @@ export default function Login() {
             <button
               type="submit"
               className="btn btn-primary text-white fw-bold"
+              onClick={() => handleLogin(formValues)}
             >
               Submit
             </button>
@@ -163,80 +139,3 @@ export default function Login() {
     </div>
   );
 }
-
-// import React, { useState } from "react";
-// import { useSelector, useDispatch } from "react-redux";
-// import { useNavigate } from "react-router-dom";
-// import AuthService from "../../_services/AuthService";
-// import { login } from "../../features/login/authSlice";
-// import TokenStorageService from '../../_services/TokenStorageService.js';
-// import "./Login.scss";
-
-// export default function Login() {
-//   const dispatch = useDispatch();
-//   const navigate = useNavigate();
-
-//   const logged = useSelector((state) => state.auth.isLoggedIn);
-
-//   console.log(`Loggeado es ${logged}`);
-
-//   const [message, setMessage] = useState("");
-
-//   const [formValues, setFormValues] = useState({
-//     email: "",
-//     password: "",
-//   });
-
-//   const handleLogin = async (credentials) => {
-//     try {
-//       const res = await AuthService.login(credentials);
-//       TokenStorageService.saveToken(res.token);
-
-//       dispatch(login(res.user));
-      
-//       if (res.user.role == "admin") {
-//         navigate("/administratorPanel");
-//       } else if (res.user.role == "user") {
-//         navigate("/movies");
-//       }
-//     } catch (e) {
-//       setMessage(
-//         "Ha habido un error inesperado, inténtelo de nuevo más tarde."
-//       );
-//     }
-//   };
-
-//   const handleChange = (e) => {
-//     const { name, value } = e.target;
-//     setFormValues({
-//       ...formValues,
-//       [name]: value,
-//     });
-//   };
-
-//   return (
-//     <div className="login">
-//       <h2 className="formTitle">Login</h2>
-//       <label htmlFor="email">Email</label>
-//       <input
-//         type="email"
-//         name="email"
-//         value={formValues.email}
-//         onChange={handleChange}
-//       />
-
-//       <label htmlFor="password">Password</label>
-//       <input
-//         type="password"
-//         name="password"
-//         value={formValues.password}
-//         onChange={handleChange}
-//       />
-
-//       <button className="btn-login" onClick={() => handleLogin(formValues)}>
-//         Submit
-//       </button>
-//       <span className="message">{message}</span>
-//     </div>
-//   );
-// }
