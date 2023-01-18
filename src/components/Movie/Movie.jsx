@@ -4,14 +4,18 @@ import { useNavigate } from "react-router-dom";
 import { environment } from "../../_environmets/environment";
 import { format } from "date-fns";
 import "./Movie.scss";
+import UserService from "../../_services/UserService";
+import styled from "styled-components";
 
 function Movie({ movie }) {
    const navigate = useNavigate();
+   const isLoggedIn = useSelector ((state)=> state.auth.user);
+   
 
    // handlers
-   const getMovieDetails = (movie) => {
-      navigate(`/movies/${movie.id}`);
-   };
+   // const getMovieDetails = (movie) => {
+   //    navigate(`/movies/${movie.id}`);
+   // };
 
    // const getYear = (date) => format(Date.parse(date), "yyyy");
 
@@ -20,7 +24,7 @@ function Movie({ movie }) {
          <div
             className="card  text-start movie-card"
             style={{ width: "13rem" }}
-            onClick={() => getMovieDetails(movie)}
+            // onClick={() => getMovieDetails(movie)}
          >
             <div className="poster-container">
                <img

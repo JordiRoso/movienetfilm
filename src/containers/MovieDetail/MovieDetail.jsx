@@ -6,6 +6,8 @@ import "./MovieDetail.scss";
 
 import { useParams } from "react-router-dom";
 
+import {useDispatch, useSelector} from "react-redux";
+
 export default function MovieDetail() {
    const [movie, setMovie] = useState({});
    const { id } = useParams();

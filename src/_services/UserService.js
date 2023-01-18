@@ -13,4 +13,16 @@ UserService.getAllUsers = async (token) => {
    return await axios.get(apiUrl, config);
 };
 
+UserService.rentMovie = async (user, movie) =>{
+   try{
+      const apiUrl = `${enviroment.BASE_URL}/users/update/${user.id}`;
+      const res = await axios.patch(apiUrl,movie);
+
+      return res.data;
+   } catch(error){
+      console.log(error);
+   }
+};
+
+
 export default UserService;
