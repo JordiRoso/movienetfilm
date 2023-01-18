@@ -51,6 +51,12 @@ UserService.deleteUser = async (user) => {
    }
 };
 
+UserService.getMoviesFromUser = async (username) => {
+   const apiUrl = `${environment.BASE_API_URL}/users/${username}`;
+   const res = await axios.get(apiUrl);
+   return res.data;
+}
+
 
 
 

@@ -111,8 +111,8 @@ function Movie({ movie }) {
   );
 }
 
-Movie.propTypes = {
-  movie: PropTypes.object.isRequired,
-};
+// Movie.propTypes = {
+//   movie: PropTypes.object.isRequired,
+// };
 
 export default Movie;

@@ -11,7 +11,7 @@ import About from "./containers/About/About";
 import Login from "./containers/Login/Login";
 import Admin from "./containers/Admin/Admin";
 import Register from "./containers/Register/Register";
-import User from "./containers/User/User";
+// import User from "./containers/User/User";
 import AdminLogin from "./containers/AdminLogin/AdminLogin";
 import LoginAdmin from "./containers/LoginAdmin/LoginAdmin";
 
@@ -29,7 +29,7 @@ function App() {
                <Route path="/login" element={<Login />} />
                <Route path="/admin" element={<Admin />} />
                <Route path="/register" element={<Register/>} />
-               <Route path="/user" element={<User/>} />
+               {/* <Route path="/user" element={<User/>} /> */}
                <Route path="/loginadmin" element={<LoginAdmin/>} />
                
             </Routes>
