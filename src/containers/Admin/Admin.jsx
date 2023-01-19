@@ -26,6 +26,15 @@ export default function Admin() {
     TokenStorageService.logOut();
     navigate("/");
   };
+  const handleDelete = async(userToDelete) => {
+    const res = await UserService.deleteUser(userToDelete);
+    console.log(res);
+    await getAllUsers(token);
+    console.log(users);
+  }
+  
+
+  
 
   return (
     <div>
@@ -40,6 +49,9 @@ export default function Admin() {
               <li>{user.email}</li>
               <li>{user.role}</li>
             </ol>
+            <div className="admin-buttons">
+                <button onClick={()=>{handleDelete(user)}} className='delete-user'>borrar</button>
+              </div>
           </div>
         ))}
       </div>

@@ -17,9 +17,10 @@ const ModalContainer = styled.div`
   bottom: auto;
   margin-right: -50%;
   transform: translate(-50%, -50%);
-  background-color: white;
+  background-color:#d5ed5c ;
+  opacity: 90%;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 40px;
   position: fixed;
   z-index: 99999;
   display: flex;
@@ -89,7 +90,7 @@ function Movie({ movie }) {
       </div>
       {isModalOpen && (
         <ModalContainer>
-          <strong>Add {movie.title} to Watchlist?</strong>
+          <strong>ALQUILER</strong>
           <div className="movie-info">
             <img
               className="modal-image"
@@ -98,10 +99,10 @@ function Movie({ movie }) {
               width={200}
             />
             <div className="movie-info-details">
-              <span className="movie-info-description">{movie.overview}</span>
+              <span className="movie-info-description">AQUI PODEIS ALQUILAR ESTE SUPER FILM</span>
               <div className="movie-info-description-buttons">
-                <button onClick={handleRentMovie}>Yes</button>
-                <button onClick={() => setIsModalOpen(false)}>No</button>
+                <button onClick={handleRentMovie}>Alquilar</button>
+                <button onClick={() => setIsModalOpen(false)}>Salir</button>
               </div>
             </div>
           </div>

@@ -13,10 +13,10 @@ UserService.getAllUsers = async (token) => {
    return await axios.get(apiUrl, config);
 };
 
-UserService.rentMovie = async (user, movie) =>{
+UserService.rentMovie = async (userId, movieId) =>{
    try{
-      const apiUrl = `${environment.BASE_API_URL}/users/update/${user.id}`;
-      const res = await axios.patch(apiUrl,movie);
+      const apiUrl = `${environment.BASE_API_URL}/users/users/${userId}/rent/${movieId}`;
+      const res = await axios.patch(apiUrl);
 
       return res.data;
    } catch(error){
@@ -24,10 +24,10 @@ UserService.rentMovie = async (user, movie) =>{
    }
 };
 
-UserService.deleteMovie = async (user, movieId) => {
+UserService.deleteMovie = async (userId, movieId) => {
    try{
-      const apiUrl = `${environment.BASE_API_URL}/users/${user._id}/deleteMovie/${movieId}`;
-      const res = await axios.delete(apiUrl);
+      const apiUrl = `${environment.BASE_API_URL}/users/users/${userId}/delete/${movieId}`;
+      const res = await axios.patch(apiUrl);
 
       return res.data;
 

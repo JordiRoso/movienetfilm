@@ -1,5 +1,5 @@
 .movie-card {
-    border-radius: 10px !important;
+    border-radius: 50px !important;
     overflow: hidden;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     border: none !important;
@@ -23,5 +23,6 @@
 }
 
 .release-date {
-    color: #7e7e7e;
+    color: #42433f;
+    opacity: 45;
 }
