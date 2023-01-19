@@ -70,9 +70,9 @@ export default function Register() {
       <div className="container pt-5 col-lg-3">
         <h2>Register</h2>
 
-        <pre className="text-start">
+        {/* <pre className="text-start">
           {JSON.stringify(formValues, undefined, 2)}
-        </pre>
+        </pre> */}
 
         <form className="text-start" noValidate onSubmit={handleSubmit}>
           <div className="mb-3">

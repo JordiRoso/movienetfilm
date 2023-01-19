@@ -43,6 +43,8 @@ function Movie({ movie }) {
     setIsModalOpen(true);
   };
 
+  // const {id} = useParams();
+
   const handleRentMovie = async () => {
    if (isLoggedIn) {
       try {
@@ -54,8 +56,16 @@ function Movie({ movie }) {
          console.log(error);
       }
    } else {
-      alert( "Login")
+      alert( "Teneís que estar loogedaos par apoder ALQUILAR PELIS!!!!")
    }
+  };
+
+  const handleRegisterRental = async () => {
+    const userId = sessionStorage.getItem("userId");
+
+    console.log(userId);
+    await UserService.rentMovie(userId, id);
+    navigate("/movies");
   };
 
   // handlers
@@ -103,6 +113,7 @@ function Movie({ movie }) {
               <div className="movie-info-description-buttons">
                 <button onClick={handleRentMovie}>Alquilar</button>
                 <button onClick={() => setIsModalOpen(false)}>Salir</button>
+                {/* <button onClick={handleRegisterRental}>Alquilarbunas</button> */}
               </div>
             </div>
           </div>
