@@ -12,13 +12,13 @@ AuthService.login = async (credentials) => {
    });
 };
 
-AuthService.login = async (credentials1) => {
-   return await axios.post(authApiUrl + "/login", {
-      email: credentials1.email,
-      password: credentials1.password,
-      password2: credentials1.password2,
-   });
-};
+// AuthService.login = async (credentials1) => {
+//    return await axios.post(authApiUrl + "/login", {
+//       email: credentials1.email,
+//       password: credentials1.password,
+//       password2: credentials1.password2,
+//    });
+// };
 
 
 

@@ -47,7 +47,7 @@ const handleShowNavbar = () => {
             onClick={handleEnterProfile}
             className="nav-link navbar-username"
           >
-            {user.name}
+            {user}
           </span>
         </li>
         <li className="nav-item">
@@ -60,7 +60,7 @@ const handleShowNavbar = () => {
            User
           </span>
         </li>
-        {user.message === "User Logged as SUPER_ADMIN" ? (
+        {user == "user" ? (
           // <li className="nav-item">
           //   <span onClick={goToAdmin} className="nav-link navbar-username">
           //     Administrator page
