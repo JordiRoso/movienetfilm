@@ -47,13 +47,13 @@ export default function Login() {
 
       // sessionsStorage.setItem("userId", res.data.id)
 
-      dispatch(login(res.user));
+      dispatch(login(res.data));
 
-      // console.log(res.user);
-      if (res.user == "super_admin") {
+      console.log(res.data.message);
+      if (res.data.message === "User Logged as SUPER_ADMIN") {
         navigate("/admin");
       } else {
-        navigate("/admin");
+        navigate("/user");
       }
     } catch (error) {
       console.log(error);
