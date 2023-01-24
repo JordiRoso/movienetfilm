@@ -43,11 +43,12 @@ export default function Login() {
     try {
       const res = await AuthService.login(credentials);
       console.log(res.data);
-      TokenStorageService.saveToken(res.token);
+      TokenStorageService.saveToken(res.data.token);
+      
 
-      // sessionsStorage.setItem("userId", res.data.id)
+      sessionStorage.setItem("userId", res.data.id)
 
-      dispatch(login(res.data));
+      dispatch(login(res.data.user));
 
       console.log(res.data.message);
       if (res.data.message === "User Logged as SUPER_ADMIN") {

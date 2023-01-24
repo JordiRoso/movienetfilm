@@ -3,6 +3,8 @@ import MovieService from "../../_services/MovieService";
 import { environment } from "../../_environmets/environment";
 import { format } from "date-fns";
 import "./MovieDetail.scss";
+import TokenStorageService from "../../_services/TokenStorageService";
+import UserService from "../../_services/UserService";
 
 import { useParams } from "react-router-dom";
 
@@ -18,15 +20,43 @@ export default function MovieDetail() {
 
    const getSingleMovie = async () => {
       try {
-         const res = await MovieService.getSingleMovie(id);
+         const res = await MovieService.getSingleMovie(movie);
          setMovie(res.data.results);
+               
          console.log("res.data.results", res.data.results);
       } catch (error) {
          console.log(error.message || error);
       }
    };
 
+   // useEffect(() => {
+   //    getNameMovie();
+   // }, []);
+
+   // const getNameMovie = async () => {
+   //    try {
+   //       const res = await MovieService.getNameMovie(movietitle);
+   //       setMovie(res.data.results);
+   //       console.log("res.data.results", res.data.results);
+   //    } catch (error) {
+   //       console.log(error.message || error);
+   //    }
+   // };
+
    const getYear = (date) => format(Date.parse(date), "yyyy");
+
+
+
+   const handleRegisterRental = async () => {
+      // TokenStorageService.saveToken();
+      
+         //  const userId = sessionStorage.getItem("userId");
+          
+      
+          console.log(userId);
+          await UserService.rentMovie(userId, id);
+          navigate("/user");
+        };
 
    return (
       <>
@@ -64,6 +94,10 @@ export default function MovieDetail() {
                         <div className="mb-4 vote-average">
                            {movie.vote_average}
                         </div>
+                        <div className="movie-info-description-buttons">
+//                 
+//                 <button onClick={handleRegisterRental}>Alquilarbunas</button>
+//               </div>
                         <h5 className="fw-bold">Overview</h5>
                         <p className="fs-5">{movie.overview}</p>
                      </div>

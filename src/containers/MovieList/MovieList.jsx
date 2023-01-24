@@ -26,20 +26,20 @@ export default function MovieList() {
     }
   };
 
-  const handleRentMovie = async () => {
-    if (isLoggedIn) {
-       try {
-          const res = UserService.rentMovie(userLogged,movie);
-          console.log(res);
+  // const handleRentMovie = async () => {
+  //   if (isLoggedIn) {
+  //      try {
+  //         const res = UserService.rentMovie(userLogged,movie);
+  //         console.log(res);
  
-          setIsModalOpen(false);
-       } catch (error) {
-          console.log(error);
-       }
-    } else {
-       alert( "Login")
-    }
-   };
+  //         setIsModalOpen(false);
+  //      } catch (error) {
+  //         console.log(error);
+  //      }
+  //   } else {
+  //      alert( "Login")
+  //   }
+  //  };
 
   
 

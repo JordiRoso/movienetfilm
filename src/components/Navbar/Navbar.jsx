@@ -58,6 +58,7 @@ const handleShowNavbar = () => {
         <li className="nav-item">
           <span onClick={handleEnterProfile } className="nav-link navbar-logout">
            User
+           {user.name}
           </span>
         </li>
         {user.message === "User Logged as SUPER_ADMIN" ? (

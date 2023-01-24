@@ -40,6 +40,7 @@ export default function Admin() {
     <div>
       <h2>admin</h2>
       <h1>12</h1>
+      
 
       <div>
         {users?.map((user) => (
@@ -49,12 +50,16 @@ export default function Admin() {
               <li>{user.email}</li>
               <li>{user.role}</li>
             </ol>
+            
             <div className="admin-buttons">
                 <button onClick={()=>{handleDelete(user)}} className='delete-user'>borrar</button>
               </div>
+              
           </div>
         ))}
       </div>
+      
+
 
       <button onClick={handleLogout}>Logout </button>
     </div>

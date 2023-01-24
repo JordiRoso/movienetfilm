@@ -1,0 +1,30 @@
+.nav-link {
+  color: #ececec !important;
+}
+.nav-link:hover {
+  color: var(--bs-primary) !important;
+}
+
+.activeNav {
+  color: var(--bs-primary) !important;
+  position: relative;
+  font-weight: bold !important;
+}
+.activeNav::before {
+  content: "";
+  width: 80%;
+  height: 5px;
+  position: absolute;
+  background-color: var(--bs-primary);
+  bottom: -13px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.navbar-username, .navbar-logout {
+  cursor: pointer;
+}
+
+.myNav {
+  font-weight: bold;
+}/*# sourceMappingURL=Navbar.css.map */
