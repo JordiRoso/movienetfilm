@@ -31,6 +31,14 @@ export default function User() {
     }
    }, []);
 
+
+   const handleDeleteMovie = async(movieId) => {
+      console.log(`mirar de borrar peli ${movieId}`);
+      const res = await UserService.deleteMovie(user, movieId);
+      console.log(res);
+      
+    }
+
    
    
   
@@ -39,18 +47,21 @@ export default function User() {
 
    return (
       <div>
-         <h2>moviesUser {user.name}</h2>
-         <h1>13</h1>
+         <h2>Usuario: {user.name}</h2>
+         <h1>Mis peliculas alquiladas</h1>
 
          
             {moviesUser.map((movie) => (
                <div key={movie._id}>
-                  {movie.title}
+                  {/* {movie.title} */}
                   <img 
                   src={`https://image.tmdb.org/t/p/w185/${movie.poster_path}`}
                   className="img-fluid mb-4 mb-md-0"
                    alt="" 
                    />
+                   {/* <div className="admin-buttons">
+                <button onClick={()=>{handleDeleteMovie(movie)}} className='delete-user'>borrar</button>
+              </div> */}
                   
                 </div>
             ))}

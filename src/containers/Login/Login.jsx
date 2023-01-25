@@ -57,6 +57,7 @@ export default function Login() {
         navigate("/user");
       }
     } catch (error) {
+      setMessage("Tiene que estar Registrado")
       console.log(error);
     }
   };

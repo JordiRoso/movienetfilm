@@ -16,8 +16,8 @@ UserService.getAllUsers = async (token) => {
 UserService.rentMovie = async (user, movie) =>{
    try{
       console.log(user)
-      // const apiUrl = `${environment.BASE_API_URL}/users/users/${userId}/rent/${movieId}`;
       const apiUrl = `${environment.BASE_API_URL}/users/${user._id}/rent`;
+      // const apiUrl = `${environment.BASE_API_URL}/users/${user._id}/rent`;
       
       const res = await axios.patch(apiUrl,movie);
       console.log(movie);
@@ -29,10 +29,10 @@ UserService.rentMovie = async (user, movie) =>{
    }
 };
 
-UserService.deleteMovie = async (userId, movieId) => {
+UserService.deleteMovie = async (user, movieId) => {
    try{
-      const apiUrl = `${environment.BASE_API_URL}/users/users/${userId}/delete/${movieId}`;
-      const res = await axios.patch(apiUrl);
+      const apiUrl = `${environment.BASE_API_URL}/users/${user._id}/deleteMovie/${movieId}`;
+      const res = await axios.delete(apiUrl);
 
       return res.data;
 

@@ -9,7 +9,7 @@ export default function Register() {
   const initialValues = {
     email: "",
     password: "",
-   
+    name: "",
   };
   // hooks
   const navigate = useNavigate();
@@ -27,7 +27,7 @@ export default function Register() {
 
       email: formValues.email,
       password: formValues.password,
-     
+      name: formValues.name,
     };
     // verificar que no hay error
     if (Object.keys(formErrors).length == 0 && isSubmit) {
@@ -42,7 +42,7 @@ export default function Register() {
       const res = await AuthService.register(user);
       console.log(res.data);
       TokenStorageService.saveToken(res.data.token);
-      navigate("/user");
+      navigate("/login");
     } catch (error) {
       console.log(error);
     }
@@ -100,7 +100,20 @@ export default function Register() {
               {formErrors.password}
             </div>
           </div>
-          
+          <div className="mb-3">
+            <label className="form-label">Name</label>
+            <input
+              type="name"
+              name="name"
+              className="form-control"
+              value={formValues.name}
+              onChange={handleChange}
+            />
+            {/* <div className="form-text form-text-error">
+              {formErrors.password}
+            </div> */}
+          </div>
+
           <div className="d-grid gap-2">
             <button
               type="submit"

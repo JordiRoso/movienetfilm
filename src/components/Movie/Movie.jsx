@@ -209,9 +209,9 @@ function Movie({ movie }) {
                </h5>
                <div className="release-date">{getYear(movie.release_date)}</div>
                <div className="movie-info-description-buttons">
-//                 
-//                 <button onClick={handleRegisterRental}>Alquilarbunas</button>
-//               </div>
+              
+                <button onClick={handleRegisterRental}>Alquilar Pelis</button>
+              </div>
             </div>
          </div>
       </div>
